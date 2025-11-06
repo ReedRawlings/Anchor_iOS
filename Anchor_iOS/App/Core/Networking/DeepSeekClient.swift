@@ -2,10 +2,44 @@
 //  DeepSeekClient.swift
 //  Anchor_iOS
 //
-//  Stub implementation of DeepSeek API client
+//  Consolidated DeepSeek client (models + errors + protocol + implementation)
 //
 
 import Foundation
+
+// MARK: - DeepSeekMessage
+
+struct DeepSeekMessage {
+    let role: String
+    let content: String
+}
+
+// MARK: - DeepSeekResponse
+
+struct DeepSeekResponse {
+    let message: String
+    let finishReason: String
+}
+
+// MARK: - DeepSeekError
+
+enum DeepSeekError: Error {
+    case invalidAPIKey
+    case networkError(Error)
+    case invalidResponse
+    case rateLimitExceeded
+}
+
+// MARK: - DeepSeekClientProtocol
+
+protocol DeepSeekClientProtocol {
+    func sendChatCompletion(
+        messages: [DeepSeekMessage],
+        systemPrompt: String
+    ) async -> Result<DeepSeekResponse, DeepSeekError>
+}
+
+// MARK: - DeepSeekClient
 
 @MainActor
 class DeepSeekClient: DeepSeekClientProtocol {
