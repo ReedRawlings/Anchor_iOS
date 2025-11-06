@@ -6,27 +6,21 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct Anchor_iOSApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+    @StateObject private var services = ServiceContainer.createStub()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(services)
+                .onOpenURL { url in
+                    // TODO: Handle anchor://panic URL scheme
+                    if url.scheme == "anchor" && url.host == "panic" {
+                        // Navigate to panic flow
+                    }
+                }
         }
-        .modelContainer(sharedModelContainer)
     }
 }
