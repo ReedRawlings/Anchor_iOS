@@ -50,7 +50,7 @@ struct SettingsView: View {
                     }
                 }
 
-                Section("Panic Button") {
+                Section("Lock In") {
                     Button {
                         viewModel.showShortcutsSetup = true
                     } label: {

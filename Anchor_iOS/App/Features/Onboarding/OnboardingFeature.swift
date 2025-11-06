@@ -670,7 +670,7 @@ struct NotificationPermissionScreen: View {
     }
 }
 
-// MARK: - Screen 6: Panic + AI Intro
+// MARK: - Screen 6: Lock In + AI Intro
 
 struct PanicAIIntroScreen: View {
     @ObservedObject var viewModel: OnboardingViewModel
@@ -692,22 +692,22 @@ struct PanicAIIntroScreen: View {
             .padding(.horizontal, CGFloat.spacingXL)
 
             VStack(spacing: CGFloat.spacingMD) {
-                // Panic Button info
+                // Lock In Button info
                 GlassCard {
                     VStack(spacing: CGFloat.spacingMD) {
-                        // Panic button demo
+                        // Lock In button demo
                         Circle()
                             .fill(Color.coralAlert)
-                            .frame(width: 60, height: 60)
+                            .frame(width: 70, height: 70)
                             .shadow(color: Color.coralAlert.opacity(0.4), radius: 12, x: 0, y: 6)
                             .overlay(
-                                Text("Panic")
-                                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                Text("Lock In")
+                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
                                     .foregroundColor(.white)
                             )
 
                         VStack(spacing: CGFloat.spacingSM) {
-                            Text("Panic Button")
+                            Text("Lock In")
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(.textPrimary)
 
@@ -973,7 +973,7 @@ struct ShortcutsSetupView: View {
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundColor(.textPrimary)
 
-                        Text("Access panic mode instantly by tapping the back of your phone 3 times")
+                        Text("Access Lock In mode instantly by tapping the back of your phone 3 times")
                             .font(.system(size: 15, weight: .regular))
                             .foregroundColor(.textSecondary)
                             .multilineTextAlignment(.center)
@@ -1016,7 +1016,7 @@ struct ShortcutsSetupView: View {
                         SetupStep(
                             number: 6,
                             title: "Select Anchor Shortcut",
-                            description: "Choose the 'Anchor Panic' shortcut from the list"
+                            description: "Choose the 'Anchor Lock In' shortcut from the list"
                         )
                     }
 
@@ -1031,7 +1031,7 @@ struct ShortcutsSetupView: View {
                                     .foregroundColor(.textPrimary)
                             }
 
-                            Text("If you don't see the 'Anchor Panic' shortcut, you'll need to create it first. The shortcut should open the URL: anchor://panic")
+                            Text("If you don't see the 'Anchor Lock In' shortcut, you'll need to create it first. The shortcut should open the URL: anchor://panic")
                                 .font(.system(size: 13, weight: .regular))
                                 .foregroundColor(.textSecondary)
                                 .lineSpacing(2)
@@ -1044,7 +1044,7 @@ struct ShortcutsSetupView: View {
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(.textPrimary)
 
-                        Text("1. Open the Shortcuts app\n2. Tap + to create new shortcut\n3. Add 'Open URL' action\n4. Enter: anchor://panic\n5. Name it 'Anchor Panic'\n6. Then follow steps above")
+                        Text("1. Open the Shortcuts app\n2. Tap + to create new shortcut\n3. Add 'Open URL' action\n4. Enter: anchor://panic\n5. Name it 'Anchor Lock In'\n6. Then follow steps above")
                             .font(.system(size: 15, weight: .regular))
                             .foregroundColor(.textSecondary)
                             .lineSpacing(4)

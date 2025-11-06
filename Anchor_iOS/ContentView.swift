@@ -42,14 +42,14 @@ struct ContentView: View {
         NavigationStack {
             HomeView(services: services)
                 .overlay(alignment: .bottomTrailing) {
-                    // Panic button - floating, always accessible
+                    // Lock In button - floating, always accessible
                     Button {
                         showPanicButton = true
                     } label: {
-                        Text("Panic")
-                            .font(.system(size: 17, weight: .semibold, design: .rounded))
+                        Text("Lock In")
+                            .font(.system(size: 14, weight: .semibold, design: .rounded))
                             .foregroundColor(.white)
-                            .frame(width: 60, height: 60)
+                            .frame(width: 70, height: 70)
                             .background(Color.coralAlert)
                             .clipShape(Circle())
                             .shadow(color: Color.coralAlert.opacity(0.4), radius: 12, x: 0, y: 6)

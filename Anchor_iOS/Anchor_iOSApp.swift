@@ -36,7 +36,7 @@ class DeeplinkHandler: ObservableObject {
 
         switch url.host {
         case "panic":
-            // Trigger panic flow
+            // Trigger Lock In flow (URL kept as "panic" for backward compatibility)
             shouldShowPanic = true
 
         case "shortcuts-setup":
