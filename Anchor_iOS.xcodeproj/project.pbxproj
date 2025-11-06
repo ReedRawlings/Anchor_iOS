@@ -14,6 +14,8 @@
 		745B4D9B2EBC8CBE00777DF9 /* Exceptions for "Anchor_iOS" folder in "Anchor_iOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Extensions/DeviceActivity/DeviceActivityExtension.swift,
+				Extensions/ShieldConfiguration/ShieldConfigurationExtension.swift,
 				Info.plist,
 			);
 			target = 745B4D8D2EBC8CBD00777DF9 /* Anchor_iOS */;
