@@ -9,9 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var services: ServiceContainer
+    @EnvironmentObject var deeplinkHandler: DeeplinkHandler
+    @StateObject private var onboardingState = OnboardingState.shared
     @State private var showPanicButton = false
-    
+    @State private var showShortcutsSetup = false
+
     var body: some View {
+        Group {
+            if onboardingState.hasCompletedOnboarding {
+                // Main app content
+                mainAppView
+            } else {
+                // Onboarding flow
+                OnboardingView(services: services)
+            }
+        }
+        .onChange(of: deeplinkHandler.shouldShowPanic) { newValue in
+            if newValue {
+                showPanicButton = true
+                deeplinkHandler.resetPanicTrigger()
+            }
+        }
+        .onChange(of: deeplinkHandler.shouldShowShortcutsSetup) { newValue in
+            if newValue {
+                showShortcutsSetup = true
+                deeplinkHandler.resetShortcutsTrigger()
+            }
+        }
+    }
+
+    private var mainAppView: some View {
         NavigationStack {
             HomeView(services: services)
                 .overlay(alignment: .bottomTrailing) {
@@ -32,6 +59,9 @@ struct ContentView: View {
                         PanicButtonView(services: services)
                     }
                 }
+                .sheet(isPresented: $showShortcutsSetup) {
+                    ShortcutsSetupView()
+                }
         }
     }
 }
@@ -39,4 +69,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(ServiceContainer.createStub())
+        .environmentObject(DeeplinkHandler())
 }

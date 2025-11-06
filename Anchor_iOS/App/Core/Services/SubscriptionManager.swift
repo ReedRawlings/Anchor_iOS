@@ -14,6 +14,17 @@ enum SubscriptionStatus {
     case free
     case premium
     case trial
+
+    var description: String {
+        switch self {
+        case .free:
+            return "Free"
+        case .premium:
+            return "Premium"
+        case .trial:
+            return "Trial"
+        }
+    }
 }
 
 // MARK: - SubscriptionManagerProtocol
